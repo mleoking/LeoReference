@@ -1,2 +1,2 @@
-# docs
-Collection of docs
+# references
+My collection of documents, codes, books, etc.
