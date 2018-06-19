@@ -2,7 +2,7 @@
 # Leo Spark Notes
 
 ## Note
-* Case class used in spark should not be defined within a function (normally the main function) otherwise the program could rise "Malformed class name" or "class count not converted to bean" exception! [e.g](https://stackoverflow.com/questions/37959985/spark-udaf-java-lang-internalerror-malformed-class-name)
+* Case class used in spark should not be defined within a function (normally the main function) otherwise the program could rise "Malformed class name" or "class could not converted to bean" exception! [e.g](https://stackoverflow.com/questions/37959985/spark-udaf-java-lang-internalerror-malformed-class-name)
 
 ## Tutorial
 * [Spark SQL, DataFrames and Datasets Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)
