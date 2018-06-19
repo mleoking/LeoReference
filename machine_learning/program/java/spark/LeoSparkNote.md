@@ -3,7 +3,7 @@
 
 ## Note
 * Case class used in spark should not be defined within a function (normally the main function) otherwise the program could rise "Malformed class name" or "class could not converted to bean" exception! [e.g](https://stackoverflow.com/questions/37959985/spark-udaf-java-lang-internalerror-malformed-class-name)
-* In scala the priority of operator -> is higher than operator +, so that when writing value expression should be wrapped with parentheses: e.g. k->(v+1) is OK while k->v+1 reports compile errors.
+* In scala the priority of operator -> is higher than operator +, so that value expression of a map should be wrapped with parentheses: e.g. k->(v+1) is OK while k->v+1 reports compile errors.
 
 ## Tutorial
 * [Spark SQL, DataFrames and Datasets Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)
