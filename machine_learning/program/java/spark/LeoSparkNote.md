@@ -12,6 +12,7 @@
 * Scala [Mutable and Immutable Collections](https://www.scala-lang.org/docu/files/collections-api/collections_1.html)
 * [Dependency Management with Spark](http://theckang.com/2016/dependency-management-with-spark/)
 * [Understanding your Apache Spark Application Through Visualization](https://databricks.com/blog/2015/06/22/understanding-your-spark-application-through-visualization.html)|[Monitoring Spark Applications](https://www.cloudera.com/documentation/enterprise/5-9-x/topics/operation_spark_applications.html)
+* [Improving Spark Performance With Partitioning](https://dev.sortable.com/spark-repartition/)
 
 ## Q&A
 * [Spark iteration time increasing exponentially when using join](https://stackoverflow.com/questions/31659404/spark-iteration-time-increasing-exponentially-when-using-join)
