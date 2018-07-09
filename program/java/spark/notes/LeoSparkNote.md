@@ -27,6 +27,7 @@ scala> qBroadcast.explain
 * [Improving Spark Performance With Partitioning](https://dev.sortable.com/spark-repartition/)
 * [Case Study: Number of Partitions for groupBy Aggregation](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-performance-tuning-groupBy-aggregation.html)
 * [Spark Hint Framework (Spark SQL 2.2)](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-hint-framework.html)
+* [Spark SQL Skew Join Optimization](https://docs.databricks.com/spark/latest/spark-sql/skew-join.html)
 
 ## Userful Configuration
 Name | Default | Description
