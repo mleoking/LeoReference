@@ -6,7 +6,7 @@
 * In scala the priority of operator -> is higher than operator +, so that value expression of a map should be wrapped with parentheses: e.g. k->(v+1) is OK while k->v+1 reports compile errors.
 * In Spark dataframe.map use `row.getAs[java.lang.Double]("abc")` instead of `row.getAs[Double]("abc")` when the column "abc" might have null values. java.lang.Double is the Java Double class that is nullable, while Double is default to be the scala Double class that is not nullable.
 * Spark SQL `<=>` operator: Returns same result with EQUAL(=) operator for non-null operands, but returns TRUE if both are NULL, FALSE if one of the them is NULL.[ref](https://stackoverflow.com/questions/41469327/spark-sql-operator)
-* To deal with data skew, use broadcast Joins (aka Map-Side Joins) when one small table can be loaded to the memory:
+* To deal with data skew, use broadcast joins (aka Map-Side Joins) when one small table can be loaded to the memory:
 ```scala
 // Force BroadcastHashJoin with broadcast hint (as function)
 val qBroadcast = spark.range(100).as("a").join(broadcast(spark.range(100)).as("b")).where($"a.id" === $"b.id")
@@ -17,6 +17,7 @@ scala> qBroadcast.explain
 +- BroadcastExchange HashedRelationBroadcastMode(List(input[0, bigint, false]))
    +- *Range (0, 100, step=1, splits=8)
 ```
+* Spark bug: ataframe.groupBy($"x").agg(UserDefinedAggregator($"y"), countDistinct($"z"), countDistinct($"a")) would report `java.lang.RuntimeException: Couldn't find "z"`! Fix: use a user defined Aggregator for countDistint to replace the countDistint in spark.
 
 ## Tutorial
 * [Spark SQL, DataFrames and Datasets Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)
