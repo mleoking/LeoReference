@@ -17,7 +17,7 @@ scala> qBroadcast.explain
 +- BroadcastExchange HashedRelationBroadcastMode(List(input[0, bigint, false]))
    +- *Range (0, 100, step=1, splits=8)
 ```
-* Spark bug: ataframe.groupBy($"x").agg(UserDefinedAggregator($"y"), countDistinct($"z"), countDistinct($"a")) would report `java.lang.RuntimeException: Couldn't find "z"`! Fix: use a user defined Aggregator for countDistint to replace the countDistint in spark.
+* Spark bug: `dataframe.groupBy($"x").agg(UserDefinedAggregator($"y"), countDistinct($"z"), countDistinct($"a"))` would report `java.lang.RuntimeException: Couldn't find "z"`! Fix: use a user defined Aggregator for countDistint to replace the countDistint in spark.
 
 ## Tutorial
 * [Spark SQL, DataFrames and Datasets Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)
