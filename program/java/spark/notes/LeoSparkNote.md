@@ -43,6 +43,16 @@ spark.task.maxFailures | 4 | Number of failures of any particular task before gi
 spark.yarn.max.executor.failures | numExecutors * 2, with minimum of 3 | The maximum number of executor failures before failing the application.
 spark.sql.files.maxPartitionBytes | 134217728 (128 MB) | The maximum number of bytes to pack into a single partition when reading files.
 
+## Data Structure
+* scala.collection:
+![scala.collection](pic/scala.collection.png)
+* scala.collection.immutable:
+![scala.collection.immutable](pic/scala.collection.immutable.png)
+* scala.collection.mutable:
+![scala.collection.mutable](pic/scala.collection.mutable.png)
+* scala.collection.Map (By default, a Scala Map is immutable):
+![scala.collection.map](pic/scala.collection.map.png)
+
 ## Q&A
 * [Spark iteration time increasing exponentially when using join](https://stackoverflow.com/questions/31659404/spark-iteration-time-increasing-exponentially-when-using-join)
 * [How to define and use a User-Defined Aggregate Function in Spark SQL?](https://stackoverflow.com/questions/32100973/how-to-define-and-use-a-user-defined-aggregate-function-in-spark-sql?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
