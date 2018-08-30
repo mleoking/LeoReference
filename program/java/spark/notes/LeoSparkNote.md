@@ -36,6 +36,7 @@ scala> qBroadcast.explain
 * [Scala’s immutable collections can be slow as a snail](https://medium.com/@hussachai/scalas-immutable-collections-can-be-slow-as-a-snail-da6fc24bc688)
 * [Tuning Spark](http://spark.apache.org/docs/latest/tuning.html)
 * [RDD Programming Guide](http://spark.apache.org/docs/latest/rdd-programming-guide.html)
+* [Tuning Java Garbage Collection for Apache Spark Applications](https://databricks.com/blog/2015/05/28/tuning-java-garbage-collection-for-spark-applications.html)
 
 ## Userful Configuration | [Spark SQLConf](https://github.com/apache/spark/blob/master/sql/catalyst/src/main/scala/org/apache/spark/sql/internal/SQLConf.scala) | [Spark Configuration](https://spark.apache.org/docs/latest/configuration.html)
 Name | Default | Description
