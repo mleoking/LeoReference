@@ -53,6 +53,7 @@ spark.sql.files.maxPartitionBytes | 134217728 (128 MB) | The maximum number of b
 spark.blacklist.enabled | false | If set to "true", prevent Spark from scheduling tasks on executors that have been blacklisted due to too many task failures. The blacklisting algorithm can be further controlled by the other "spark.blacklist" configuration options.
 spark.debug.maxToStringFields | 25 | The performance overhead of creating and logging strings for wide schemas can be large. To imit the impact, we bound the number of fields to include by default. This can be overridden by setting the 'spark.debug.maxToStringFields' conf in SparkEnv.
 spark.sql.autoBroadcastJoinThreshold | 10485760 (10 MB) | Configures the maximum size in bytes for a table that will be broadcast to all worker nodes when performing a join. By setting this value to -1 broadcasting can be disabled. Note that currently statistics are only supported for Hive Metastore tables where the command ANALYZE TABLE <tableName> COMPUTE STATISTICS noscan has been run.
+spark.sql.broadcastTimeout | 300 | Timeout in seconds for the broadcast wait time in broadcast joins.
 
 
 ## Data Structure
