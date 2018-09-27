@@ -1,2 +1,2 @@
 ## Tutorial
-* [Lookahead and Lookbehind](https://www.regular-expressions.info/lookaround.html)
+* [Look around](https://www.regular-expressions.info/lookaround.html)
