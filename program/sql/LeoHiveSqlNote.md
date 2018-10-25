@@ -1,5 +1,5 @@
 ### Note
-* when there is null value in a column it needs to be treated alone: null!='abc' does not return true.
+* When there is null value in a column it needs to be treated alone: null!='abc' does not return true.
 * Only the 'abc' row is inserted as the second row is with different partition value:
 ```sql
 insert overwrite table tab1 partition(p_20181001) select * from (
