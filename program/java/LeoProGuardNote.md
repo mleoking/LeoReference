@@ -1,4 +1,6 @@
-# Use ProGuard in Maven
+# Notes
+ 
+* Use ProGuard in Maven
 
 ```xml
     <build>
