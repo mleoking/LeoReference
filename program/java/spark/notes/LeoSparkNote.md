@@ -54,6 +54,7 @@ spark.blacklist.enabled | false | If set to "true", prevent Spark from schedulin
 spark.debug.maxToStringFields | 25 | The performance overhead of creating and logging strings for wide schemas can be large. To imit the impact, we bound the number of fields to include by default. This can be overridden by setting the 'spark.debug.maxToStringFields' conf in SparkEnv.
 spark.sql.autoBroadcastJoinThreshold | 10485760 (10 MB) | Configures the maximum size in bytes for a table that will be broadcast to all worker nodes when performing a join. By setting this value to -1 broadcasting can be disabled. Note that currently statistics are only supported for Hive Metastore tables where the command ANALYZE TABLE <tableName> COMPUTE STATISTICS noscan has been run.
 spark.sql.broadcastTimeout | 300 | Timeout in seconds for the broadcast wait time in broadcast joins.
+spark.default.parallelism | |Default number of partitions in RDDs returned by transformations like join, reduceByKey, and parallelize when not set by user. Config this number to avoid partition number increasing exponentially when iteratively join rdd/dataframes.
 
 
 ## Data Structure
