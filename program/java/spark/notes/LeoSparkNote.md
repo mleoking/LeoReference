@@ -19,6 +19,7 @@ scala> qBroadcast.explain
 ```
 * Spark bug: `dataframe.groupBy($"x").agg(UserDefinedAggregator("y"), countDistinct($"z"), countDistinct($"a"))` would report `java.lang.RuntimeException: Couldn't find "z"`! Fix: use a user defined Aggregator for countDistint to replace the countDistint in spark.
 * Use `dataframe.groupByKey(f1(Row=>K)).mapGroups(f2(K,Iterator[Row]=>(col1, col2,...)))` instead of `dataframe.groupBy($"x").agg(UserDefinedAggregator1("y"), UserDefinedAggregator2("z"), ...)` and implement all groupby statistics in f2 when there are many UserDefinedAggregators with complex buffer structures (e.g. Map). This approach reduces the shuffle size as it uses a local mapGroup function in reducers to calculate all statistics and process all data for a key, avoiding complex buffer structure being shuffled if many UserDefinedAggregators are used.
+*  It is important that you persist/cache your RDD first before checkpointing as checkpointing will materialise the RDD twice, once when it builds it for use and again when it needs to write it to disk - however if you have cached it before hand, it only needs to materialise it once, the second time it can read from the cache.
 
 ## Tutorial
 * [Spark SQL, DataFrames and Datasets Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)
@@ -78,6 +79,8 @@ spark.default.parallelism | |Default number of partitions in RDDs returned by tr
 * [How to optimize shuffle spill in Apache Spark application](https://stackoverflow.com/questions/30797724/how-to-optimize-shuffle-spill-in-apache-spark-application)
 * [Spark custom aggregation : collect_list+UDF vs UDAF](https://stackoverflow.com/questions/49294294/spark-custom-aggregation-collect-listudf-vs-udaf)
 * [Spark group concat __wm_concat__ equivalent in scala dataframe:](https://stackoverflow.com/questions/34150547/spark-group-concat-equivalent-in-scala-rdd) concat_ws(";", collect_list($"col_name"))
+* __whats the difference between checkpoints and using persist(DISK_ONLY)?__
+persisting will materialise and save the RDD in memory or disk or both depending on your configuration and will also store and remember the lineage. This means that if there are Node failures on the node storing your cached RDD, they can be rebuilt using the lineage. Checkpoints do not store the lineage and will only write RDD contents to disk. If you are in a noisey cluster, checkpointing may also help to store RDD’s to files within HDFS saving memory. Otherwise it is recommended to only use checkpoints when your RDD lineage gets too large.
 
 ## Other
 * [External shuffle service registration timeout is very short with heavy workloads when dynamic allocation is enabled](https://jira.apache.org/jira/browse/SPARK-19528)
