@@ -28,7 +28,7 @@ left outer join (
   select * from tab_y_nr where nr>100000
 ) c on a.yid=c.yid;
  ```
- * Window function _count_ should be used without the order by clause otherwise it would result in different count result for a same partition. e.g. Correct: count(1) over (partition city), Wrong: count(1) over (partition city order by 1).
+ * Window function _count_ should be used without the order by clause otherwise it would result in different count result for a same partition. e.g. ```Correct: count(1) over (partition city), Wrong: count(1) over (partition city order by 1).```
 
 ### Tutorial
 * [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)
