@@ -83,7 +83,7 @@ spark.default.parallelism | |Default number of partitions in RDDs returned by tr
 * __whats the difference between checkpoints and using persist(DISK_ONLY)?__
 persisting will materialise and save the RDD in memory or disk or both depending on your configuration and will also store and remember the lineage. This means that if there are Node failures on the node storing your cached RDD, they can be rebuilt using the lineage. Checkpoints do not store the lineage and will only write RDD contents to disk. If you are in a noisey cluster, checkpointing may also help to store RDD’s to files within HDFS saving memory. Otherwise it is recommended to only use checkpoints when your RDD lineage gets too large.
 * [How to control partition size in Spark SQL?](https://stackoverflow.com/questions/38249624/how-to-control-partition-size-in-spark-sql) For Spark < 2.0: You can use Hadoop configuration options:```mapred.min.split.size. mapred.max.split.size dfs.block.size sc.hadoopConfiguration.setInt("mapred.min.split.size", minSplit) sc.hadoopConfiguration.setInt("mapred.max.split.size", maxSplit)
-``` For Spark 2.0+: You can use spark.sql.files.maxPartitionBytes configuration: ```spark.conf.set("spark.sql.files.maxPartitionBytes", maxSplit)```
+``` You can also try ```spark.hadoop.mapred.max.split.size```.  For Spark 2.0+: You can use spark.sql.files.maxPartitionBytes configuration: ```spark.conf.set("spark.sql.files.maxPartitionBytes", maxSplit)```
 
 ## Other
 * [External shuffle service registration timeout is very short with heavy workloads when dynamic allocation is enabled](https://jira.apache.org/jira/browse/SPARK-19528)
