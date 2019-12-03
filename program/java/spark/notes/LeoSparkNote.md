@@ -91,3 +91,6 @@ persisting will materialise and save the RDD in memory or disk or both depending
 
 ## Other
 * [External shuffle service registration timeout is very short with heavy workloads when dynamic allocation is enabled](https://jira.apache.org/jira/browse/SPARK-19528)
+
+## Reference
+* [Apache Spark @Scale: A 60 TB+ production use case](https://engineering.fb.com/core-data/apache-spark-scale-a-60-tb-production-use-case/)
