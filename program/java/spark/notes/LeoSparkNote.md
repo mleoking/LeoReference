@@ -25,6 +25,7 @@ scala> qBroadcast.explain
 * For two rows with the same orderBy column value, each run of the window function row_number could return different value for these rows. For example, RowA, RowB, RowC are all with the same orderBy column value, first run of row_number returns [RowA.row_number=1, RowB.row_number=2, RowC.row_number=3], second run of row_number returns [RowA.row_number=3, RowB.row_number=1, RowC.row_number=2]. This would cause further problems when you used the row_number to filter the rows (e.g. filter those with row_number=1). Each run of the program would end up with different output. The solution is to add more columns in the orderBy clause of the window function, eliminating the case of multiple rows with same orderBy column values.
 * User save+load/checkpoint to break a long DAG into several short DAGs would make the program run more smoothly. For a long DAG, when there is a data blocked failed in a middle step, all its data would be calculated from the first step and further errors could happen during the recalculation and this might eventually fail the whole program.
 * About the value of spark.sql.shuffle.partitions: when the value is too small, there could be executor GC problems, when the value is too large, the shuffle reading duration would be longer. 
+* Set `spark.shuffle.service.enabled` to be true would help the program run more smoothly.
 
 ## Tutorial
 * [Spark SQL, DataFrames and Datasets Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)
@@ -61,7 +62,7 @@ spark.debug.maxToStringFields | 25 | The performance overhead of creating and lo
 spark.sql.autoBroadcastJoinThreshold | 10485760 (10 MB) | Configures the maximum size in bytes for a table that will be broadcast to all worker nodes when performing a join. By setting this value to -1 broadcasting can be disabled. Note that currently statistics are only supported for Hive Metastore tables where the command ANALYZE TABLE <tableName> COMPUTE STATISTICS noscan has been run.
 spark.sql.broadcastTimeout | 300 | Timeout in seconds for the broadcast wait time in broadcast joins.
 spark.default.parallelism | |Default number of partitions in RDDs returned by transformations like join, reduceByKey, and parallelize when not set by user. Config this number to avoid partition number increasing exponentially when iteratively join rdd/dataframes.
-
+spark.shuffle.service.enabled | false | Enables the external shuffle service. This service preserves the shuffle files written by executors so the executors can be safely removed. This must be enabled if spark.dynamicAllocation.enabled is "true". The external shuffle service must be set up in order to enable it. See dynamic allocation configuration and setup documentation for more information.
 
 ## Data Structure
 * scala.collection:
