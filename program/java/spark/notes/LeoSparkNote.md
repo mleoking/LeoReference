@@ -26,6 +26,7 @@ scala> qBroadcast.explain
 * User save+load/checkpoint to break a long DAG into several short DAGs would make the program run more smoothly. For a long DAG, when there is a data blocked failed in a middle step, all its data would be calculated from the first step and further errors could happen during the recalculation and this might eventually fail the whole program.
 * About the value of spark.sql.shuffle.partitions: when the value is too small, there could be executor GC problems, when the value is too large, the shuffle reading duration would be longer. 
 * Set `spark.shuffle.service.enabled` to be true would help the program run more smoothly.
+* Avoid using both null and empty strings as values in a partitioned table, as hive would change empty strings to null after reading and saving the data using dataframe. [Ref](https://kb.databricks.com/data/null-empty-strings.html)
 
 ## Tutorial
 * [Spark SQL, DataFrames and Datasets Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)
