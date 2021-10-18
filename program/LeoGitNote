@@ -1,3 +1,5 @@
+# First time github git terminal setup
+
 Your first time with git and github
 If you’ve never used git or github before, there are a bunch of things that you need to do. It’s very well explained on github, but repeated here for completeness.
 
@@ -40,6 +42,7 @@ If it says something like the following, it worked:
 Hi username! You've successfully authenticated, but Github does
 not provide shell access.
 
+# References
 
 * https://kbroman.org/github_tutorial/pages/first_time.html
 * https://www.digitalocean.com/community/tutorials/fork-clone-make-changes-push-to-github
