@@ -1,4 +1,6 @@
-# First time github git terminal setup
+# Git notes
+
+## First time github git terminal setup
 
 Your first time with git and github
 If you’ve never used git or github before, there are a bunch of things that you need to do. It’s very well explained on github, but repeated here for completeness.
@@ -41,6 +43,22 @@ If it says something like the following, it worked:
 
 Hi username! You've successfully authenticated, but Github does
 not provide shell access.
+
+## Upload large files to github
+
+In mac:
+
+```bash
+brew install git-lfs
+git lfs install
+git lfs track "*.7z*"
+git add .gitattributes ---ignore this step for github, otherwise github would ask for lfs quota.
+git add .
+git commit -m "Add large file"
+git push origin main
+```
+Github limits the size of each file to less than 2GB. So that files larger than 2GB should be split into multiple volumes. 
+In mac, you can use Keka to split and zip the files.
 
 # References
 
